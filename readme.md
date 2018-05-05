@@ -12,30 +12,29 @@
 - **No monkey-patching**.
 - Single dependency with **~50 lines of code**.
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
-- No more end-users complaining that your CLI doesn't support Node v4, v6, etc.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
 
 
 ## Why
 
-A lot of Node.js CLI programs need to support older versions of Node, and in order to do so, they either
+A lot of Node.js CLI programs need to support older versions of Node, and in order to do so, they either:
 
 - Resort to using deprecated ES5 syntax and carefully make sure all dependencies follow suit.
 - Require the CLI to be run via Docker which is clumsy to execute (eg. no `npm install -g`).
-- Or rely on a complicated transpiler step in order to achieve backwards compatibility.
+- Rely on a complicated transpilation step in order to achieve backwards compatibility.
 
 While transpilation is great for larger projects, it's a bit of a headache, when all you really want to do is ensure your program works for end users.
 
-`node-compat` is the simplest way of ensuring a compatible node execution environment across different node versions without sacrificing the ability to use the latest & greatest Node.js features.
+> `node-compat` is the simplest way of ensuring a compatible node version without sacrificing the latest & greatest Node features.
 
 
 ## How it works
 
-You require `node-compat` and give it a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
+You require `node-compat` and pass a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
 
 If the current process's node version satisfies that range, then `node-compat` returns without doing anything.
 
-If the current process's node version does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the target node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat`, only this time it will continue executing your code normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat` will exit the parent process with the same exit code.
+If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat`, only this time it will continue executing your code normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat` will exit the parent process with the same exit code.
 
 **Note**: it is recommended but not required for you to invoke `node-compat` at the very beginning of your program.
 **Note**: `node-compat` requires an active internet connection for `npx` to install the correct version of node.
