@@ -1,8 +1,8 @@
 # node-compat
 
-> Easily allow your Node program to run in a target node version range for maximum compatibility.
+> Easily allow your Node program to run in a target node version range to maximize compatibility.
 
-[![NPM](https://img.shields.io/npm/v/node-compat.svg)](https://www.npmjs.com/package/node-compat) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/transitive-bullshit/node-compat.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 - **Super simple** to use.
 - If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
@@ -13,6 +13,8 @@
 - Single dependency with **~50 lines of code**.
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
+
+**NOTE**: This module is not yet available on NPM, as I'm awaiting the results of a module dispute for the name `node-compat.
 
 
 ## Why
