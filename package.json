@@ -1,0 +1,34 @@
+{
+  "name": "node-compat",
+  "version": "0.0.1",
+  "description": "Easily enable your Node program to enforce specific Node version requirements.",
+  "main": "index.js",
+  "repository": "transitive-bullshit/node-compat",
+  "author": "Travis Fischer <travis@automagical.ai>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava -v && standard"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    "node",
+    "version",
+    "compatible",
+    "compatibility",
+    "backwards",
+    "cli",
+    "npx"
+  ],
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "sinon": "^5.0.3",
+    "standard": "^11.0.0"
+  },
+  "dependencies": {
+    "execa": "^0.10.0",
+    "npx": "^10.2.0",
+    "semver": "^5.5.0"
+  }
+}
