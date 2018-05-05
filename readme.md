@@ -91,6 +91,13 @@ compat('./example/cli', { node: '7.10.0' })
 compat('.', { node: '4 || >=9 || 6.0.0 - 7.0.0' })
 ```
 
+##### opts.quiet
+
+Type: `Boolean`
+Default: `false`
+
+Use this to optionally silence the `npx` output.
+
 
 ## How it works
 

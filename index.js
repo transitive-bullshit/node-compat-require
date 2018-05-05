@@ -29,6 +29,7 @@ module.exports = function (path, opts) {
 
   opts.process = opts.process || process
   opts.stdio = opts.stdio || 'inherit'
+  opts.quiet = true // !!opts.quiet
 
   if (semver.satisfies(opts.process.version, opts.node)) {
     const id = resolve.sync(path, {
@@ -41,11 +42,14 @@ module.exports = function (path, opts) {
   const nodeVersion = semver.maxSatisfying(nodeVersions, opts.node)
 
   const args = [
+    opts.quiet && '-q',
     '-p',
     'node@' + nodeVersion,
     '--',
     'node'
-  ].concat(opts.process.argv.slice(1))
+  ]
+    .concat(opts.process.argv.slice(1))
+    .filter(Boolean)
 
   try {
     const child = execa.sync('npx', args, {
