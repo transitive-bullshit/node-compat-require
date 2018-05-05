@@ -50,7 +50,6 @@ module.exports = function (path, opts) {
   ]
     .concat(opts.process.argv.slice(1))
     .filter(Boolean)
-  console.log(args)
 
   try {
     const child = execa.sync('npx', args, {
