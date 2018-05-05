@@ -2,7 +2,7 @@
 
 > Easily allow your Node program to run in a target node version range to maximize compatibility.
 
-[![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/node-compat-require.svg)](https://www.npmjs.com/package/node-compat-require) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 - **Super simple** to use.
 - If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
@@ -14,7 +14,9 @@
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
 
-![Demo](https://raw.githubusercontent.com/transitive-bullshit/node-compat-require/master/example/demo.gif)
+<p align="center">
+  <img width="600" alt="Demo" src="https://cdn.rawgit.com/transitive-bullshit/create-react-library/master/media/demo.svg">
+</p>
 
 
 ## Why
@@ -47,7 +49,7 @@ const compatRequire = require('node-compat-require')
 compatRequire('.', { node: '>= 8' })
 ```
 
-In this example, './index.js' would be required only once the Node process is greater than or equal to `v8.0.0`.
+In this example, './index.js' would be required only once the Node process is `>= 8`.
 
 See the [example folder](https://github.com/transitive-bullshit/node-compat-require/tree/master/example) for a complete example of a node program which can be run with `node >= 4` but will enforce `node >= 8` at runtime in order to support newer JS features like async / await and object destructuring.
 
