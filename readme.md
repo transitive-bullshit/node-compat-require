@@ -14,6 +14,8 @@
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
 
+![Demo](https://raw.githubusercontent.com/transitive-bullshit/node-compat-require/master/example/demo.gif)
+
 
 ## Why
 

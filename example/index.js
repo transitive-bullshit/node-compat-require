@@ -1,4 +1,4 @@
-'use strict'
+// this program uses features only available in node >= 8.
 
 const main = async (argv) => {
   // use async / await
