@@ -4,8 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/node-compat-require.svg)](https://www.npmjs.com/package/node-compat-require) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-- **Super simple** to use.
-- If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
+- **Simple** to use.
+- If desired node version isn't satisfied, it installs the right version with **npx** and continues.
 - **Targeted at CLIs** that want to **maximize compatibility** without sacrificing JS features.
 - Use **async / await** in older versions of node.
 - **No complicated transpilation**.
@@ -108,7 +108,7 @@ If the current process's node version satisfies that range, then `node-compat-re
 If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat-require`, only this time it will require your target module normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat-require` will exit the parent process with the same exit code.
 
 **Note**: it is recommended but not required for you to invoke `node-compat-require` at the very beginning of your program.
-**Note**: `node-compat-require` requires an active internet connection for `npx` to install the correct version of node.
+**Note**: `node-compat-require` needs an active internet connection for `npx` to install the correct version of node.
 
 
 ## Related
