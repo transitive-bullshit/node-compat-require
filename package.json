@@ -1,6 +1,6 @@
 {
   "name": "node-compat-require",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Easily allow your Node program to run in a target node version range to maximize compatibility.",
   "main": "index.js",
   "repository": "transitive-bullshit/node-compat-require",
