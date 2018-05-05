@@ -47,6 +47,8 @@ compatRequire('.', { node: '>= 8' })
 
 In this example, './index.js' would be required only once the Node process is greater than or equal to `v8.0.0`.
 
+See the [example folder](https://github.com/transitive-bullshit/node-compat-require/tree/master/example) for a complete example of a node program which can be run with `node >= 4` but will enforce `node >= 8` at runtime in order to support newer JS features like async / await and object destructuring.
+
 
 ## API
 
