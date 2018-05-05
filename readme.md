@@ -7,7 +7,7 @@
 - **Super simple** to use.
 - If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
 - **Targeted at CLIs** that want to **maximize compatibility** without sacrificing JS features.
-- Use **async / await** in older versions of node!
+- Use **async / await** in older versions of node.
 - **No complicated transpilation**.
 - **No monkey-patching**.
 - Single dependency with **~50 lines of code**.
