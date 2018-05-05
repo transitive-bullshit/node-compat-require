@@ -47,6 +47,7 @@ test('node v4.0.0 requires >= 9.0.0 : node --version', function (t) {
   const opts = {
     node: '>= 9',
     stdio: 'pipe',
+    quiet: true,
     process: {
       argv: [ 'node', '--version' ],
       version: '4.0.0',
@@ -62,7 +63,7 @@ test('node v4.0.0 requires >= 9.0.0 : node --version', function (t) {
     code: 0,
     failed: false,
     signal: null,
-    cmd: 'npx -p node@10.0.0 -- node --version',
+    cmd: 'npx -q -p node@10.0.0 -- node --version',
     timedOut: false
   })
   t.truthy(opts.process.exit.calledOnceWithExactly(0))
@@ -72,6 +73,7 @@ test('node v6.4.0 requires ^8.11.0 : node --version', function (t) {
   const opts = {
     node: '^8.11.0',
     stdio: 'pipe',
+    quiet: true,
     process: {
       argv: [ 'node', '--version' ],
       version: 'v6.4.0',
@@ -87,7 +89,7 @@ test('node v6.4.0 requires ^8.11.0 : node --version', function (t) {
     code: 0,
     failed: false,
     signal: null,
-    cmd: 'npx -p node@8.11.1 -- node --version',
+    cmd: 'npx -q -p node@8.11.1 -- node --version',
     timedOut: false
   })
   t.truthy(opts.process.exit.calledOnceWithExactly(0))
@@ -97,6 +99,7 @@ test('node v8.8.0 requires 9.6.x : node --version', function (t) {
   const opts = {
     node: '9.6.x',
     stdio: 'pipe',
+    quiet: true,
     process: {
       argv: [ 'node', '--version' ],
       version: 'v8.8.0',
@@ -112,7 +115,7 @@ test('node v8.8.0 requires 9.6.x : node --version', function (t) {
     code: 0,
     failed: false,
     signal: null,
-    cmd: 'npx -p node@9.6.1 -- node --version',
+    cmd: 'npx -q -p node@9.6.1 -- node --version',
     timedOut: false
   })
   t.truthy(opts.process.exit.calledOnceWithExactly(0))
@@ -122,6 +125,7 @@ test('node v11.0.0 requires 7.10.0 : node --version', function (t) {
   const opts = {
     node: '7.10.0',
     stdio: 'pipe',
+    quiet: true,
     process: {
       argv: [ '/usr/local/bin/node', '--version' ],
       version: 'v11.0.0',
@@ -137,7 +141,7 @@ test('node v11.0.0 requires 7.10.0 : node --version', function (t) {
     code: 0,
     failed: false,
     signal: null,
-    cmd: 'npx -p node@7.10.0 -- node --version',
+    cmd: 'npx -q -p node@7.10.0 -- node --version',
     timedOut: false
   })
   t.truthy(opts.process.exit.calledOnceWithExactly(0))
@@ -147,6 +151,7 @@ test('node v6.0.0 requires >= 8 : node -e "invalid" => should throw error', func
   const opts = {
     node: '>= 8',
     stdio: 'pipe',
+    quiet: true,
     process: {
       argv: [ 'node', '-e "invalid"' ],
       version: 'v6.0.0',
