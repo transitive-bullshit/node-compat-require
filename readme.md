@@ -15,7 +15,7 @@
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
 
 <p align="center">
-  <img width="600" alt="Demo" src="https://cdn.rawgit.com/transitive-bullshit/create-react-library/master/media/demo.svg">
+  <img width="600" alt="Demo" src="https://cdn.rawgit.com/transitive-bullshit/node-compat-require/master/example/demo.svg">
 </p>
 
 
