@@ -29,7 +29,7 @@ module.exports = function (path, opts) {
 
   opts.process = opts.process || process
   opts.stdio = opts.stdio || 'inherit'
-  opts.quiet = true // !!opts.quiet
+  opts.quiet = !!opts.quiet
 
   if (semver.satisfies(opts.process.version, opts.node)) {
     const id = resolve.sync(path, {
