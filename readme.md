@@ -30,18 +30,6 @@ While transpilation is great for larger projects, it's a bit of a headache, when
 > `node-compat` is the simplest way of ensuring a compatible node version without sacrificing the latest & greatest Node features.
 
 
-## How it works
-
-You require `node-compat` and pass a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
-
-If the current process's node version satisfies that range, then `node-compat` returns without doing anything.
-
-If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat`, only this time it will continue executing your code normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat` will exit the parent process with the same exit code.
-
-**Note**: it is recommended but not required for you to invoke `node-compat` at the very beginning of your program.
-**Note**: `node-compat` requires an active internet connection for `npx` to install the correct version of node.
-
-
 ## Install
 
 This module requires `node >= 4`.
@@ -88,6 +76,18 @@ compat({ node: '9' })
 compat({ node: '7.10.0' })
 compat({ node: '4 || >=9 || 6.0.0 - 7.0.0' })
 ```
+
+
+## How it works
+
+You require `node-compat` and pass a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
+
+If the current process's node version satisfies that range, then `node-compat` returns without doing anything.
+
+If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat`, only this time it will continue executing your code normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat` will exit the parent process with the same exit code.
+
+**Note**: it is recommended but not required for you to invoke `node-compat` at the very beginning of your program.
+**Note**: `node-compat` requires an active internet connection for `npx` to install the correct version of node.
 
 
 ## Related
