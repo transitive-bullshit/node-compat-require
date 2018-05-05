@@ -1,7 +1,7 @@
 {
   "name": "node-compat",
   "version": "0.0.1",
-  "description": "Easily enable your Node program to enforce specific Node version requirements.",
+  "description": "Easily allow your Node program to run in a target node version range for maximum compatibility.",
   "main": "index.js",
   "repository": "transitive-bullshit/node-compat",
   "author": "Travis Fischer <travis@automagical.ai>",

@@ -1,10 +1,11 @@
 # node-compat
 
-> Easily enable your Node program to enforce Node version requirements.
+> Easily allow your Node program to run in a target node version range for maximum compatibility.
 
 [![NPM](https://img.shields.io/npm/v/node-compat.svg)](https://www.npmjs.com/package/node-compat) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 - **Super simple** to use.
+- If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
 - **Targeted at CLIs** that want to **maximize compatibility** without sacrificing JS features.
 - Use **async / await** in older versions of node!
 - **No complicated transpilation**.
@@ -13,6 +14,19 @@
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
 - No more end-users complaining that your CLI doesn't support Node v4, v6, etc.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
+
+
+## Why
+
+A lot of Node.js CLI programs need to support older versions of Node, and in order to do so, they either
+
+- Resort to using deprecated ES5 syntax and carefully make sure all dependencies follow suit.
+- Require the CLI to be run via Docker which is clumsy to execute (eg. no `npm install -g`).
+- Or rely on a complicated transpiler step in order to achieve backwards compatibility.
+
+While transpilation is great for larger projects, it's a bit of a headache, when all you really want to do is ensure your program works for end users.
+
+`node-compat` is the simplest way of ensuring a compatible node execution environment across different node versions without sacrificing the ability to use the latest & greatest Node.js features.
 
 
 ## How it works
