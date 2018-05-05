@@ -1,9 +1,9 @@
 {
-  "name": "node-compat",
+  "name": "node-compat-require",
   "version": "0.0.1",
   "description": "Easily allow your Node program to run in a target node version range to maximize compatibility.",
   "main": "index.js",
-  "repository": "transitive-bullshit/node-compat",
+  "repository": "transitive-bullshit/node-compat-require",
   "author": "Travis Fischer <travis@automagical.ai>",
   "license": "MIT",
   "scripts": {
@@ -29,6 +29,7 @@
   "dependencies": {
     "execa": "^0.10.0",
     "npx": "^10.2.0",
+    "resolve": "^1.7.1",
     "semver": "^5.5.0"
   }
 }

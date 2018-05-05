@@ -1,8 +1,8 @@
-# node-compat
+# node-compat-require
 
 > Easily allow your Node program to run in a target node version range to maximize compatibility.
 
-[![Build Status](https://travis-ci.org/transitive-bullshit/node-compat.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 - **Super simple** to use.
 - If node doesn't satisfy a target semver range, installs the right version with **npx** and continues.
@@ -13,8 +13,6 @@
 - Single dependency with **~50 lines of code**.
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
 - Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
-
-**NOTE**: This module is not yet available on NPM, as I'm awaiting the results of a module dispute for the name `node-compat.
 
 
 ## Why
@@ -27,7 +25,7 @@ A lot of Node.js CLI programs need to support older versions of Node, and in ord
 
 While transpilation is great for larger projects, it's a bit of a headache, when all you really want to do is ensure your program works for end users.
 
-> `node-compat` is the simplest way of ensuring a compatible node version without sacrificing the latest & greatest Node features.
+> `node-compat-require` is the simplest way of ensuring a compatible node version without sacrificing the latest & greatest node features.
 
 
 ## Install
@@ -35,32 +33,42 @@ While transpilation is great for larger projects, it's a bit of a headache, when
 This module requires `node >= 4`.
 
 ```bash
-npm install --save node-compat
+npm install --save node-compat-require
 ```
+
 
 ## Usage
 
 ```js
-const compat = require('node-compat')
+const compatRequire = require('node-compat-require')
 
-compat({ node: '>= 8' })
-
-// regular JS code using modern features here...
+compatRequire('.', { node: '>= 8' })
 ```
+
+In this example, './index.js' would be required only once the Node process is greater than or equal to `v8.0.0`.
 
 
 ## API
 
-### compat(opts)
+### compatRequire(path, opts)
 
-Ensure the current Node process satisfies the given requirements.
+If the current node process satisfies the given requirements, returns `require(path)`.
+
+If the current node process does not satisfy the requirements, installs the correct version of node, re-invokes the current node program as a subprocess, and exits once the child process exits.
+
+#### path
+
+Type: `String`
+**Required**
+
+Path of file to require if node process satisfies constraints. This may be a relative file just like a normal node `require` statement.
 
 #### opts
 
 Type: `Object`
 **Required**
 
-#### opts.node
+##### opts.node
 
 Type: `String`
 **Required**
@@ -70,24 +78,24 @@ Required semver [range](https://www.npmjs.com/package/semver#ranges) for the nod
 Examples:
 
 ```js
-compat({ node: '>= 8' })
-compat({ node: '^6' })
-compat({ node: '9' })
-compat({ node: '7.10.0' })
-compat({ node: '4 || >=9 || 6.0.0 - 7.0.0' })
+compat('.', { node: '>= 8' })
+compat('./bin', { node: '^6' })
+compat('./lib/cmd', { node: '9' })
+compat('./example/cli', { node: '7.10.0' })
+compat('.', { node: '4 || >=9 || 6.0.0 - 7.0.0' })
 ```
 
 
 ## How it works
 
-You require `node-compat` and pass a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
+You require `node-compat-require` and pass a desired node semver [range](https://www.npmjs.com/package/semver#ranges) (like `'>= 8'` or `'^6.0.0'`).
 
-If the current process's node version satisfies that range, then `node-compat` returns without doing anything.
+If the current process's node version satisfies that range, then `node-compat-require` requires the target module and returns.
 
-If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat`, only this time it will continue executing your code normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat` will exit the parent process with the same exit code.
+If the current process does not satisfy that range, then `npx` is used to temporarily install the appropriate matching version of [node](https://www.npmjs.com/package/node) from npm and re-run the current process as a subprocess using the temporary node executable. In this case, all commandline flags, environment variables, and stdio will be inherited from the current process. The child process will again run into `node-compat-require`, only this time it will require your target module normally because the version check is satisfied. Once the child process terminates, either due to successful completion or an error, `node-compat-require` will exit the parent process with the same exit code.
 
-**Note**: it is recommended but not required for you to invoke `node-compat` at the very beginning of your program.
-**Note**: `node-compat` requires an active internet connection for `npx` to install the correct version of node.
+**Note**: it is recommended but not required for you to invoke `node-compat-require` at the very beginning of your program.
+**Note**: `node-compat-require` requires an active internet connection for `npx` to install the correct version of node.
 
 
 ## Related

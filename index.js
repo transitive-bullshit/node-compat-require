@@ -3,14 +3,21 @@
 // NOTE: we're purposefully using some deprecated syntax instead of more modern
 // alternatives for strict compatibility with node >= 4.
 
+const dirname = require('path').dirname
 const execa = require('execa')
+const resolve = require('resolve')
 const semver = require('semver')
 
 const nodeVersions = require('./node-versions')
 
-module.exports = function (opts) {
-  opts.process = opts.process || process
-  opts.stdio = opts.stdio || 'inherit'
+module.exports = function (path, opts) {
+  if (!path) {
+    throw new Error('missing required argument "path"')
+  }
+
+  if (!opts) {
+    throw new Error('missing required argument "opts"')
+  }
 
   if (!opts.node) {
     throw new Error('missing required argument "opts.node"')
@@ -20,8 +27,15 @@ module.exports = function (opts) {
     throw new Error('invalid semver range "opts.node"')
   }
 
+  opts.process = opts.process || process
+  opts.stdio = opts.stdio || 'inherit'
+
   if (semver.satisfies(opts.process.version, opts.node)) {
-    return
+    const id = resolve.sync(path, {
+      basedir: dirname(module.parent.filename)
+    })
+
+    return require(id)
   }
 
   const nodeVersion = semver.maxSatisfying(nodeVersions, opts.node)
