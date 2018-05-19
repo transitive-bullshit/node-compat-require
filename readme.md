@@ -4,15 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/node-compat-require.svg)](https://www.npmjs.com/package/node-compat-require) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-- **Simple** to use.
 - If desired node version isn't satisfied, it installs the right version with **npx** and continues.
 - **Targeted at CLIs** that want to **maximize compatibility** without sacrificing JS features.
 - Use **async / await** in older versions of node.
-- **No complicated transpilation**.
-- **No monkey-patching**.
-- Single dependency with **~50 lines of code**.
 - Optionally pin your node program to a **specific version** of node for extreme reproducibility.
-- Built with the secure and popular **[npx](https://github.com/zkat/npx)**.
 
 <p align="center">
   <img width="800" alt="Demo" src="https://cdn.rawgit.com/transitive-bullshit/node-compat-require/master/example/demo2.svg">
