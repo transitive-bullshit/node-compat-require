@@ -24,13 +24,13 @@
   ],
   "devDependencies": {
     "ava": "^0.25.0",
-    "sinon": "^5.0.3",
+    "sinon": "^6.1.2",
     "standard": "^11.0.0"
   },
   "dependencies": {
     "execa": "^0.10.0",
     "npx": "^10.2.0",
-    "resolve": "^1.7.1",
+    "resolve": "^1.8.1",
     "semver": "^5.5.0"
   }
 }
