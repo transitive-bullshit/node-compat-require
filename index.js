@@ -39,6 +39,10 @@ module.exports = function (path, opts) {
     return require(id)
   }
 
+  if (!opts.quiet) {
+    console.warn(`this program requires a more recent version of \`node ${opts.node}\``)
+  }
+
   const nodeVersion = semver.maxSatisfying(nodeVersions, opts.node)
 
   const args = [
