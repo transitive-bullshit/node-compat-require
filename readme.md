@@ -2,7 +2,7 @@
 
 > Easily allow your Node program to run in a target node version range to maximize compatibility.
 
-[![NPM](https://img.shields.io/npm/v/node-compat-require.svg)](https://www.npmjs.com/package/node-compat-require) [![Build Status](https://travis-ci.org/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.org/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/node-compat-require.svg)](https://www.npmjs.com/package/node-compat-require) [![Build Status](https://travis-ci.com/transitive-bullshit/node-compat-require.svg?branch=master)](https://travis-ci.com/transitive-bullshit/node-compat-require) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 - If unsupported node version, installs the right version with **npx** and continues.
 - **Targeted at CLIs** that want to maximize compatibility without sacrificing JS features.
